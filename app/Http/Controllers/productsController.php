@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
 use Exception;
-use Exeception;
+
 
 class ProductsController extends Controller
 {
@@ -22,7 +21,27 @@ class ProductsController extends Controller
     }
     public function create()
     {
-        return view('products.create');
+        try{
+            $fields = [
+                [
+                    'type' => 'text',
+                    'name' => 'name',
+                    'label' => 'Nombre',
+                    'placeholder' => 'Ingrese el nombre',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'price',
+                    'label' => 'Precio',
+                    'placeholder' => 'Ingrese el precio',
+                ],
+                
+            ];
+        return view('products.create', compact('fields'));
+        }catch(Exception $e)
+        {
+            return redirect()->back()->with('error',__('messages.product.load_error',['error'=>$e->getMessage()]));
+        }
     }
 
     public function store(ProductRequest $request)
@@ -42,13 +61,27 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         try {
-            return view('products.edit', compact('product'));
+                $fields = [
+                    [
+                        'type' => 'text',
+                        'name' => 'name',
+                        'label' => 'Nombre',
+                        'placeholder' => 'Ingrese el nombre',
+                    ],
+                    [
+                        'type' => 'text',
+                        'name' => 'price',
+                        'label' => 'Precio',
+                        'placeholder' => 'Ingrese el precio',
+                    ],
+                ];
+            return view('products.edit', compact('product','fields'));
         } catch (Exception $e) {
             return redirect()->back()->with('error', __('messages.product.load_error',['error'=>$e->getMessage()]));
         }
     }
 
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
         try {
             $validated = $request->validate([

@@ -12,10 +12,9 @@ return [
 'timezone' => env('APP_TIMEZONE', 'UTC'),
 
 'locale' => 'es',
+'fallback_locale' => 'es',
+'available_locales' => ['en', 'es'],
 
-'fallback_locale' => env('APP_FALLBACK_LOCALE', 'es'),
-
-'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
 'cipher' => 'AES-256-CBC',
 

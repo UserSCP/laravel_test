@@ -27,4 +27,9 @@ return [
         'update_error' => 'Error al actualizar la categoria: :error',
         'delete_error' => 'Error al eliminar la categoria: :error',
     ],
+    'language'=>[
+        'change_language_error'=>'El idioma no se podido cambiar: :error',
+        'load_error'=>'Error al cargar los idomas: :error',
+        'change_language'=>'El idioma se cambio',
+    ],
 ];

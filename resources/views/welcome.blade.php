@@ -20,7 +20,17 @@
                 </div>
             </div>
         @endif
+        @if (session('create'))
+        <div class="container">
+            <div class="alert2">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{ session('error') }}
+            </div>
+        </div>
+        @endif
     </div>
+
+
     @include('layouts.footer')
 </body>
 

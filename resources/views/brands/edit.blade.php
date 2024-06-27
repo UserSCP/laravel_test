@@ -3,12 +3,9 @@
 @section('title', 'Editar Marca')
 
 @section('content')
-    @component('components.form', [
-        'route' => route('brands.update', $brand),
-        'title' => 'Editar Marca',
-        'object' => $brand
-    ])
-    @endcomponent
+
+    <x-form :route="route('brands.update',$brand)" :title="'Actualizar marca'" :fields="$fields"/>
+
 @endsection
 @push('styles')
 <link href="{{ asset('css/form.css') }}" rel="stylesheet">

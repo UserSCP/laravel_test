@@ -3,12 +3,9 @@
 @section('title', 'Editar Categoria')
 
 @section('content')
-    @component('components.form', [
-        'route' => route('categories.update', $category),
-        'title' => 'Editar Categoria',
-        'object' => $category
-    ])
-    @endcomponent
+
+    <x-form :route="route('categories.update',$category)" :title="'Actualizar Categoria'" :fields="$fields"/>
+
 @endsection
 @push('styles')
 <link href="{{ asset('css/form.css') }}" rel="stylesheet">

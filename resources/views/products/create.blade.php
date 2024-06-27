@@ -3,11 +3,7 @@
 @section('title', 'Crear Producto')
 
 @section('content')
-    @component('components.form', [
-        'route' => route('products.store'),
-        'title' => 'Crear Producto'
-    ])
-    @endcomponent
+    <x-form :route="route('products.store')" :title="'Crear Producto'" :fields="$fields" />
 @endsection
 @push('styles')
 <link href="{{ asset('css/form.css') }}" rel="stylesheet">

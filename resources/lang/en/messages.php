@@ -27,5 +27,10 @@ return[
         'update_error' => 'Error updating category: :error',
         'delete_error' => 'Error deleting category: :error',
     ],
+    'language'=>[
+        'change_language_error'=>'The language could not be changed: :error',
+        'load_error'=>'Error loading languages: :error',
+        'change_language'=>'The language has been changed',
+    ],
 
 ];

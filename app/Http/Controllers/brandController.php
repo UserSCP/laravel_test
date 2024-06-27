@@ -22,7 +22,20 @@ class BrandController extends Controller
 
     public function create()
     {
-        return view('brands.create');
+        try{
+        $fields = [
+            [
+                'name' => 'name',
+                'type' => 'text',
+                'label' => 'Nombre',
+                'placeholder' => 'Ingrese el nombre',
+            ],
+            ];
+        return view('brands.create',compact('fields'));
+    }catch(Exception $e)
+    {
+        return redirect()->back()->with('error',__('messages.brand.load_error',['error'=>$e->getMessage()]));
+    }
     }
 
     public function store(BrandRequest $request)
@@ -41,7 +54,15 @@ class BrandController extends Controller
     public function edit(Brand $brand)
     {
         try{
-        return view('brands.edit', compact('brand'));
+            $fields = [
+                [
+                    'name' => 'name',
+                    'type' => 'text',
+                    'label' => 'Nombre',
+                    'placeholder' => 'Ingrese el nombre',
+                ],
+                ];
+        return view('brands.edit', compact('brand','fields'));
         }catch (Exception $e) {
             return redirect()->back()->with('error',__('messages.brand.load_error',['error'=>$e->getMessage()]));
         }
